@@ -1,9 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Stage Jeux Vidéo</title>
+  <style>
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #2c2c2c;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      border-left: 4px solid #4a90e2;
+      padding-left: 12px;
+      margin-bottom: 30px;
+    }
+
+    .stage-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .stage-text {
+      font-size: 1rem;
+    }
+
+    .stage-text h3 {
+      font-size: 1.3rem;
+      margin-top: 0;
+      color: #4a90e2;
+    }
+
+    .stage-text ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0 20px 0;
+    }
+
+    .stage-text ul li {
+      margin: 6px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .stage-text ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #4a90e2;
+    }
+
+    .stage-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stage-images img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .stage-images img:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 800px) {
+      .stage-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
+  <section>
+    <h2>Stage – Développement d’un système d’inventaire et d’interaction</h2>
+    <div class="stage-container">
+      <!-- Texte -->
+      <div class="stage-text">
+        <h3>Krenium Studio (2025)</h3>
+        <p>
+          Dans le cadre de mon Master Informatique, j’ai effectué un stage de 10 semaines 
+          au sein du studio indépendant <strong>Krenium Studio</strong>. 
+          Le projet concernait un <em>jeu mobile d’horreur</em> constitué de mini-jeux, 
+          avec des mécaniques variées allant de la survie à l’exploration.
+        </p>
 
-<h1>My First Heading </h1>
-<p>My first paragraph.</p>
+        <p><strong>Ma mission principale :</strong></p>
+        <ul>
+          <li>Conception et implémentation d’un système d’inventaire modulaire</li>
+          <li>Gestion flexible des objets (ramassage, inspection 3D, lecture, utilisation)</li>
+          <li>Interface adaptée au mobile</li>
+          <li>Système d’inspection 3D avec rotation et zoom</li>
+        </ul>
 
+        <p><strong>Technologies utilisées :</strong></p>
+        <ul>
+          <li>Unreal Engine 5 (C++ et Blueprints)</li>
+          <li>Perforce (gestion de version)</li>
+          <li>Visual Studio 2022</li>
+        </ul>
+
+        <p>
+          Ce stage m’a permis de renforcer mes compétences en 
+          <em>développement C++ orienté composants</em>, 
+          en <em>intégration C++ / Blueprint</em> et en 
+          <em>optimisation pour plateformes mobiles</em>.
+        </p>
+      </div>
+
+      <!-- Images -->
+      <div class="stage-images">
+        <img src="images/inventaire.png" alt="Interface d’inventaire mobile">
+        <img src="images/inspection.png" alt="Mode inspection d’objet 3D">
+      </div>
+    </div>
+  </section>
 </body>
 </html>
