@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage Krenium Studio — Système d'inventaire modulaire</title>
+    <title>Brice Pierre-Edouard | Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">BPE</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="stageUE5.html">Stage Unreal Engine</a></li>
+                <li><a href="stageUEFN.html">Stage UEFN</a></li>
+                <li><a href="blender.html">Vitrine Blender</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
-            <h1>Système modulaire d'inventaire et d'interaction</h1>
-            
-            <div class="meta-info">
-                <div class="meta-item">Krenium Studio</div>
-                <div class="meta-item">10 semaines</div>
-                <div class="meta-item">2025</div>
-                <div class="meta-item">Unreal Engine 5</div>
-                <div class="meta-item">C++ & Blueprint</div>
-            </div>
-
+            <h1>Brice Pierre-Edouard</h1>
             <p class="intro-text">
-                Le système devait intégrer trois mécaniques fondamentales interconnectées : un système d'inventaire 
-                permettant la gestion des objets avec un nombre de slots configurable selon le contexte du mini-jeu, 
-                un système d'interaction offrant aux joueurs la possibilité d'interagir avec les éléments de 
-                l'environnement via différents types d'actions (ramassage, utilisation, lecture, examen), et un 
-                mécanisme d'inspection détaillée permettant l'examen approfondi des objets avec rotation, zoom et 
-                affichage d'informations contextuelles.
+                Étudiant en Master Informatique, spécialisé en développement de jeux vidéo. 
+                Passionné par la conception d'architectures logicielles modulaires et l'optimisation 
+                pour plateformes mobiles.
             </p>
         </div>
     </header>
@@ -33,247 +38,41 @@
     <main>
         <section>
             <div class="container">
-                <h2>Architecture modulaire</h2>
-
-                <p>
-                    J'ai conçu une architecture basée sur des <strong>Actor Components</strong> plutôt que sur 
-                    l'héritage classique. Cette approche par composition permet d'attacher des fonctionnalités 
-                    à n'importe quel Actor sans contrainte hiérarchique : un personnage, un PNJ ou un conteneur 
-                    peuvent utiliser le même système d'inventaire simplement en ajoutant le composant approprié.
-                </p>
-
-                <div class="image-showcase">
-                    <div class="image-container">
-                        <img src="images/arc1.png" alt="Schéma de l'architecture modulaire">
-                        <img src="images/arc2.png" alt="Schéma de l'architecture modulaire">
-                        <img src="images/arc3.png" alt="Schéma de l'architecture modulaire">
-                        <img src="images/arc4.png" alt="Schéma de l'architecture modulaire">
-                        <p class="image-caption">Architecture générale du système avec interfaces et composants</p>
-                    </div>
-                </div>
-
-                <h3>Trois interfaces principales</h3>
-
+                <h2>Expériences professionnelles</h2>
+                
                 <div class="system-grid">
-                    <div class="system-card">
-                        <h4>IInteractable</h4>
-                        <p>
-                            Définit le contrat pour tous les objets interactifs. Gère différents types d'actions : 
-                            ramassage, utilisation, lecture, dialogue, inspection et activation de mécanismes.
-                        </p>
-                    </div>
+                    <a href="stageUE5.html" class="system-card" style="text-decoration: none;">
+                        <h4>Stage Unreal Engine</h4>
+                        <p>10 semaines • 2025</p>
+                        <p>Système modulaire d'inventaire et d'interaction pour Unreal Engine 5</p>
+                    </a>
 
-                    <div class="system-card">
-                        <h4>IInspectable</h4>
-                        <p>
-                            Permet l'examen détaillé des objets avec rotation et zoom. Sépare la représentation 
-                            dans le monde de celle utilisée pour l'inspection afin d'optimiser les performances.
-                        </p>
-                    </div>
+                    <a href="stageUEFN.html" class="system-card" style="text-decoration: none;">
+                        <h4>Stage UEFN</h4>
+                        <p>8 semaines • 2024</p>
+                        <p>Concevoir un Loup-garou sur UEFN</p>
+                    </a>
 
-                    <div class="system-card">
-                        <h4>IMaterialOverlayInterface</h4>
-                        <p>
-                            Gère les effets visuels comme la surbrillance via des matériaux de superposition, 
-                            sans altérer les matériaux d'origine des objets.
-                        </p>
-                    </div>
+                    <a href="blender.html" class="system-card" style="text-decoration: none;">
+                        <h4>Stage 3</h4>
+                        <p>À venir</p>
+                        <p>Description du stage à compléter</p>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <section class="bg-alt">
-            <div class="container">
-                <h2>Système d'inventaire</h2>
-
-                <p>
-                    Le composant <strong>UInventoryComponent</strong> gère l'ensemble des objets possédés. 
-                    Pour optimiser les performances mobiles, j'ai utilisé <code>TSubclassOf&lt;AWorldItem&gt;</code> 
-                    plutôt que des instances d'objets, réduisant ainsi l'empreinte mémoire et les sollicitations 
-                    du garbage collector.
-                </p>
-
-                <div class="two-column">
-                    <div>
-                        <h3>Structure de données</h3>
-                        
-                        <div class="code-block">
-                            <span class="keyword">struct</span> FInventorySlot {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;TSubclassOf&lt;AWorldItem&gt; ItemClass;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;int32 Quantity;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;int32 MaxQuantity;<br>
-                            };
-                        </div>
-
-                        <p>
-                            La taille de l'inventaire est configurable, permettant à chaque mini-jeu de définir 
-                            ses propres contraintes (5 slots pour un puzzle, 20 pour l'exploration).
-                        </p>
-                    </div>
-
-                    <div>
-                        <img src="images/InventoryInterface.png" alt="Interface d'inventaire mobile">
-                        <p class="image-caption">Interface d'inventaire</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <strong>Algorithme d'ajout optimisé</strong> : Le système utilise une stratégie en deux passes. 
-                    D'abord, il remplit les slots existants partiels jusqu'à leur capacité maximale. Ensuite, 
-                    il crée de nouveaux slots pour les objets restants. Cette approche garantit une utilisation 
-                    optimale de l'espace et minimise la fragmentation.
-                </div>
-
-                <div class="image-container">
-                    <img src="images/DataTable.png" alt="Configuration centralisée via DataTable">
-                    <p class="image-caption">Configuration centralisée des objets via DataTable</p>
-                </div>
-
-                <div class="tech-tags">
-                    <span class="tech-tag">Slots configurables</span>
-                    <span class="tech-tag">Empilement intelligent</span>
-                    <span class="tech-tag">Filtrage par catégorie</span>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2>Système d'interaction</h2>
-
-                <p>
-                    Le composant <strong>UInteractorComponent</strong> gère la détection d'objets via ray-casting 
-                    configurable. Initialement conçu avec une sphere trace centrée sur le joueur afin de détecter 
-                    les objets présents dedans et une méthode de priorité pour savoir avec lequel interagir. 
-                    Cette partie a été faite avec un template qu'on m'a suggéré pour effectuer la partie liée 
-                    à l'interaction que j'ai modifié pour être adapté au projet et plus optimisé pour un projet mobile.
-                </p>
-
-                <div class="two-column">
-                    <div>
-                        <video controls width="100%" style="border: 6px solid #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
-                            <source src="images/InteractionVideo.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la vidéo HTML5.
-                        </video>
-                        <p class="image-caption">Système de détection avec sphère centrée sur le joueur</p>
-                    </div>
-
-                    <div>
-                        <h3>Constructeur de l'InteractorComponent</h3>
-                        
-                        <div class="image-container">
-                            <img src="images/InteractorConstructor.png" alt="Constructeur du composant d'interaction">
-                            <p class="image-caption">Configuration du composant d'interaction</p>
-                        </div>
-
-                        <p>
-                            Le système est configurable afin de garantir de bonnes performances, avec une fréquence de détection ajustable pour chaque mini-jeu.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-alt">
-            <div class="container">
-                <h2>Système d'inspection 3D</h2>
-
-                <p>
-                    Le composant <strong>UInspectorComponent</strong> orchestre l'examen détaillé des objets. 
-                    Un acteur <code>ItemInspector</code> dédié embarque toute l'infrastructure 3D : caméra, 
-                    éclairage, gestion des contrôles.
-                </p>
-
-                <div class="image-container">
-                    <img src="images/InspectionStructure.jpg" style="width:50%; height:auto;"alt="Architecture de l'acteur ItemInspector">
-                    <p class="image-caption">Composants de l'acteur ItemInspector (Capsule, SpringArm, Camera, Mesh, SpotLight)</p>
-                </div>
-
-                <h3>Transition fluide</h3>
-
-                <p>
-                    La navigation entre l'inventaire et l'inspection utilise un <strong>Widget Switcher</strong>, 
-                    permettant de basculer entre deux pages distinctes : la grille d'inventaire et la vue d'inspection 3D. 
-                    Cette séparation garantit une isolation claire des fonctionnalités.
-                </p>
-
-                <div class="two-column">
-                    <div>
-                        <img src="images/InspectionSwitcher.jpg" alt="Navigation par Widget Switcher">
-                        <p class="image-caption">Système de navigation entre pages</p>
-                    </div>
-                    <div>
-                        <video controls width="100%" style="border: 6px solid #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
-                            <source src="images/InspectionVideo.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la vidéo HTML5.
-                        </video>
-                        <p class="image-caption">Vue lors de l'inspection</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <strong>Double représentation visuelle</strong> : Chaque objet possède deux meshes distincts. 
-                    Le <code>WorldMesh</code> est optimisé pour le gameplay (LOD réduit), tandis que 
-                    l'<code>InspectionMesh</code> privilégie la qualité visuelle pour l'examen détaillé. 
-                    Cette séparation maximise les performances sur mobile.
-                </div>
-
-                <div class="tech-tags">
-                    <span class="tech-tag">Rotation & Zoom</span>
-                    <span class="tech-tag">Depth of Field</span>
-                    <span class="tech-tag">Input Mapping Context</span>
-                    <span class="tech-tag">Assignation dynamique</span>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2>Résultat et apprentissages</h2>
-
-                <p>
-                    Ce système modulaire constitue une base technique solide et réutilisable pour les futurs projets 
-                    du studio. L'architecture par interfaces permet une extensibilité maximale : l'ajout de nouveaux 
-                    types d'objets ou d'interactions ne nécessite aucune modification du code existant.
-                </p>
-
-                <div class="system-grid">
-                    <div class="system-card">
-                        <h4>Architecture modulaire</h4>
-                        <p>
-                            Composition d'Actor Components découplés, facilement attachables à tout type d'Actor 
-                            sans contrainte hiérarchique.
-                        </p>
-                    </div>
-
-                    <div class="system-card">
-                        <h4>Optimisation mobile</h4>
-                        <p>
-                            Gestion mémoire optimisée, temporisation intelligente, double représentation visuelle 
-                            pour maximiser les performances.
-                        </p>
-                    </div>
-
-                    <div class="system-card">
-                        <h4>Intégration C++/Blueprint</h4>
-                        <p>
-                            Utilisation de délégués multicast pour la communication entre systèmes, exposition 
-                            des propriétés aux designers.
-                        </p>
-                    </div>
-                </div>
-
-                <p style="margin-top: 40px;">
-                    Ce stage m’a permis de découvrir et d’approfondir l’utilisation d’Unreal Engine ainsi que le développement en C++, tout en me familiarisant avec la conception de systèmes modulaires pour le jeu vidéo.
-                </p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>Stage Krenium Studio — 2025</p>
+            <p>Portfolio — 2025</p>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
