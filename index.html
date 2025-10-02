@@ -78,6 +78,7 @@
                             sans altérer les matériaux d'origine des objets.
                         </p>
                     </div>
+                </div>
             </div>
         </section>
 
@@ -129,10 +130,9 @@
                 </div>
 
                 <div class="tech-tags">
-                    <span class="tech-tag">Slots configurables</span><br>
-                    <span class="tech-tag">Empilement intelligent</span><br>
-                    <span class="tech-tag">Sauvegarde robuste</span><br>
-                    <span class="tech-tag">Filtrage par catégorie</span><br>
+                    <span class="tech-tag">Slots configurables</span>
+                    <span class="tech-tag">Empilement intelligent</span>
+                    <span class="tech-tag">Filtrage par catégorie</span>
                 </div>
             </div>
         </section>
@@ -143,26 +143,27 @@
 
                 <p>
                     Le composant <strong>UInteractorComponent</strong> gère la détection d'objets via ray-casting 
-                    configurable. Initialement conçu avec des lancers multiples, j'ai repensé le système avec un 
-                    balayage sphérique unique pour optimiser les performances mobiles.
+                    configurable. Initialement conçu avec une sphere trace centrée sur le joueur afin de détecter 
+                    les objets présents dedans et une méthode de priorité pour savoir avec lequel interagir. 
+                    Cette partie a été faite avec un template qu'on m'a suggéré pour effectuer la partie liée 
+                    à l'interaction que j'ai modifié pour être adapté au projet et plus optimisé pour un projet mobile.
                 </p>
 
                 <div class="two-column">
                     <div>
-                        <img src="images/detection_sphere.png" alt="Détection avec balayage sphérique">
-                        <p class="image-caption">Balayage sphérique optimisé pour mobile</p>
+                        <video controls width="100%" style="border: 6px solid #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+                            <source src="images/InteractionVideo.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la vidéo HTML5.
+                        </video>
+                        <p class="image-caption">Système de détection avec sphère centrée sur le joueur</p>
                     </div>
 
                     <div>
-                        <h3>Types de détection</h3>
+                        <h3>Constructeur de l'InteractorComponent</h3>
                         
-                        <div class="code-block">
-<span class="keyword">enum class</span> EInteractionTraceType {
-    Line,      <span class="comment">// Précision maximale</span>
-    Sphere,    <span class="comment">// Tolérance tactile</span>
-    Box,       <span class="comment">// Zone rectangulaire</span>
-    Multiline  <span class="comment">// Balayage étendu</span>
-};
+                        <div class="image-container">
+                            <img src="images/interactorConstructor.png" alt="Constructeur du composant d'interaction">
+                            <p class="image-caption">Configuration du composant d'interaction</p>
                         </div>
 
                         <p>
@@ -173,9 +174,16 @@
                     </div>
                 </div>
 
-                <div class="image-container">
-                    <img src="images/widget_prompt.png" alt="Widget d'interaction contextuel">
-                    <p class="image-caption">Widget d'interaction contextuel s'affichant lors de la détection</p>
+                <div class="code-block">
+                    UENUM(BlueprintType)<br>
+                    <span class="keyword">enum class</span> EInteractionTraceType : uint8<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Line,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Sphere,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Box,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;SphereSweep,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;StaticSphereWithFOV,<br>
+                    };
                 </div>
             </div>
         </section>
